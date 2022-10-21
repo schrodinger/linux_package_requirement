@@ -70,6 +70,7 @@ function get_package_manager() {
         ;;
     "suse")
         package_manager="zypper"
+        ;;
     *)
         echo "WARNING: package manager for distribition \"$platform\" is unknown."
         ;;
