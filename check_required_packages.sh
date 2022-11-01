@@ -98,7 +98,7 @@ function get_missing_package() {
     if [ ${#missing_packages[@]} -eq 0 ]; then
         echo "Your machine has the required packages."
     else
-        echo "$package is a required package to use Schrödinger suite. Please install it using:
+        echo "(${missing_packages[@]}) is/are required package/s to use Schrödinger suite. Please install them using:
         sudo $package_manager install ${missing_packages[@]}"
     fi
 }
