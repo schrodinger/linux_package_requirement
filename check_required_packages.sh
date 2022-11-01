@@ -25,6 +25,7 @@ function get_required_packages() {
         ;;
     *)
         echo "WARNING: List of dependencies for distribition \"$platform\" is unknown."
+        echo "Please install libX11 and/or libfontconfig packages."
         return 1
         ;;
     esac
@@ -85,15 +86,21 @@ function get_missing_package() {
     required_packages="$1"
     cmd="$2"
     package_manager="$3"
+    missing_packages=()
 
     for package in ${required_packages}; do
-        echo "package: $package, cmd: $cmd"
         $cmd $package
         if [[ $? != 0 ]]; then
-            echo "$package is a required package to use Schrödinger suite.
-            Please install it using: sudo $package_manager install $package."
+            missing_packages+=($package)
         fi
     done
+
+    if [ ${#missing_packages[@]} -eq 0 ]; then
+        echo "Your machine has the required packages."
+    else
+        echo "$package is a required package to use Schrödinger suite. Please install it using:
+        sudo $package_manager install ${missing_packages[@]}"
+    fi
 }
 
 echo "required_packages for your platform are: ${required_packages}"
