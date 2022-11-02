@@ -100,6 +100,7 @@ function get_missing_package() {
     else
         echo "(${missing_packages[@]}) is/are required package/s to use Schrödinger suite. Please install them using:
         sudo $package_manager install ${missing_packages[@]}"
+        exit 1
     fi
 }
 
