@@ -18,10 +18,10 @@ function get_required_packages() {
 
     case "${platform,,}" in
     "centos" | "redhat" | "rocky")
-        required_packages=('fontconfig' 'libX11' 'libxkbcommon-x11' 'xcb-util-renderutil')
+        required_packages=('fontconfig' 'libX11' 'libxkbcommon-x11' 'xcb-util-renderutil' 'libglvnd-egl' 'libglvnd-opengl' 'libxkbcommon')
         ;;
     "ubuntu")
-        required_packages=('fontconfig')
+        required_packages=('fontconfig' 'libegl1' 'libopengl0' 'libxkbcommon0' 'libxcb-xinput0')
         ;;
     *)
         echo "WARNING: List of dependencies for distribition \"$platform\" is unknown."
