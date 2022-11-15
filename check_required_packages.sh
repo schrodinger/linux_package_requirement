@@ -15,7 +15,6 @@ else
 fi
 
 function get_required_packages() {
-
     case "${platform,,}" in
     "centos" | "redhat" | "rocky")
         required_packages=('fontconfig' 'libX11' 'libxkbcommon-x11' 'xcb-util-renderutil' 'libglvnd-egl' 'libglvnd-opengl' 'libxkbcommon')
@@ -33,8 +32,6 @@ function get_required_packages() {
 get_required_packages
 
 function check_if_package_installed() {
-    # platform=$1
-
     case "$platform" in
     "ubuntu")
         cmd="dpkg -s"
@@ -78,6 +75,7 @@ function get_missing_package() {
     for package in ${required_packages[@]}; do
 
         echo "cmd & package: $cmd $package"
+
         $cmd $package
         if [[ $? != 0 ]]; then
             missing_packages+=($package)
