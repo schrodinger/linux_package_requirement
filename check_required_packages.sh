@@ -1,10 +1,11 @@
 #!/bin/bash
 
 function identify_platform() {
-    echo "$(. /etc/os-release && echo "$ID")"
+    platform="$(. /etc/os-release && echo "$ID")"
 }
 
-platform=$(identify_platform)
+identify_platform
+
 echo "platform is $platform"
 if [[ -z $platform ]]; then
     echo "ERROR: This system couldn't be identified."
@@ -14,8 +15,6 @@ else
 fi
 
 function get_required_packages() {
-    platform=$1
-
     case "${platform,,}" in
     "centos" | "redhat" | "rocky")
         required_packages=('fontconfig' 'libX11' 'libxkbcommon-x11' 'xcb-util-renderutil' 'libglvnd-egl' 'libglvnd-opengl' 'libxkbcommon')
@@ -26,18 +25,13 @@ function get_required_packages() {
     *)
         echo "WARNING: List of dependencies for distribition \"$platform\" is unknown."
         echo "Please install libX11 and/or libfontconfig packages."
-        return 1
         ;;
     esac
-
-    echo "${required_packages[@]}"
 }
 
-required_packages=$(get_required_packages "$platform")
+get_required_packages
 
 function check_if_package_installed() {
-    platform=$1
-
     case "$platform" in
     "ubuntu")
         cmd="dpkg -s"
@@ -46,21 +40,17 @@ function check_if_package_installed() {
         cmd="yum list"
         ;;
     "redhat" | "suse")
-        cmd="rpm -qa | grep"
+        cmd="rpm -q"
         ;;
     *)
         echo "WARNING: package check command for distribition \"$platform\" is unknown."
-        return 1
         ;;
     esac
-
-    echo $cmd
 }
 
-package_check_cmd=$(check_if_package_installed "$platform")
+check_if_package_installed
 
 function get_package_manager() {
-    platform="$1"
 
     case "$platform" in
     "centos" | "redhat" | "rocky")
@@ -76,19 +66,16 @@ function get_package_manager() {
         echo "WARNING: package manager for distribition \"$platform\" is unknown."
         ;;
     esac
-
-    echo "$package_manager"
 }
 
-package_manager=$(get_package_manager "$platform")
+get_package_manager
 
 function get_missing_package() {
-    required_packages="$1"
-    cmd="$2"
-    package_manager="$3"
     missing_packages=()
+    for package in ${required_packages[@]}; do
 
-    for package in ${required_packages}; do
+        echo "cmd & package: $cmd $package"
+
         $cmd $package
         if [[ $? != 0 ]]; then
             missing_packages+=($package)
@@ -104,5 +91,6 @@ function get_missing_package() {
     fi
 }
 
-echo "required_packages for your platform are: ${required_packages}"
-get_missing_package "${required_packages[@]}" "$package_check_cmd" "$package_manager"
+echo "required_packages for your platform are: ${required_packages[@]}"
+
+get_missing_package
