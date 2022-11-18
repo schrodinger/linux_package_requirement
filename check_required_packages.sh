@@ -7,7 +7,7 @@ function identify_platform() {
 identify_platform
 
 echo "platform is $platform"
-if [[ -z $platform ]]; then
+if [[ -z "$platform" ]]; then
     echo "ERROR: This system couldn't be identified."
     exit 1
 else
