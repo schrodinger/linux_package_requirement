@@ -1,12 +1,13 @@
 #!/bin/bash
 
+set -eu -o pipefail
+
 function identify_platform() {
     platform="$(. /etc/os-release && echo "$ID")"
 }
 
 identify_platform
 
-echo "platform is $platform"
 if [[ -z "$platform" ]]; then
     echo "ERROR: This system couldn't be identified."
     exit 1
@@ -39,11 +40,11 @@ function check_if_package_installed() {
     "centos")
         cmd="yum list"
         ;;
-    "redhat" | "suse")
+    "redhat" | "suse" | "rocky")
         cmd="rpm -q"
         ;;
     *)
-        echo "WARNING: package check command for distribition \"$platform\" is unknown."
+        echo "WARNING: package check command for distribution \"$platform\" is unknown."
         ;;
     esac
 }
@@ -63,7 +64,7 @@ function get_package_manager() {
         package_manager="zypper"
         ;;
     *)
-        echo "WARNING: package manager for distribition \"$platform\" is unknown."
+        echo "WARNING: package manager for distribution \"$platform\" is unknown."
         ;;
     esac
 }
