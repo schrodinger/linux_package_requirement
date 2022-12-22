@@ -39,7 +39,7 @@ function check_if_package_installed() {
     "centos")
         cmd="yum list"
         ;;
-    "redhat" | "suse")
+    "redhat" | "suse" | "rocky")
         cmd="rpm -q"
         ;;
     *)
