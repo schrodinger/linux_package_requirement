@@ -26,7 +26,8 @@ function get_required_packages() {
     *)
         echo "WARNING: List of dependencies for distribution \"$platform\" is unknown."
         echo "Please install libX11 and/or libfontconfig packages."
-        exit
+        echo "List of supported platforms can be found at: https://www.schrodinger.com/supportedplatforms"
+        exit 1
         ;;
     esac
 }
