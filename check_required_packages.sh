@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eu -o pipefail
+set -uo pipefail
 
 function identify_platform() {
     platform="$(. /etc/os-release && echo "$ID")"
@@ -17,15 +17,16 @@ fi
 
 function get_required_packages() {
     case "${platform,,}" in
-    "centos" | "redhat" | "rocky")
+    "centos" | "rhel" | "rocky")
         required_packages=('fontconfig' 'libX11' 'libxkbcommon-x11' 'xcb-util-renderutil' 'libglvnd-egl' 'libglvnd-opengl' 'libxkbcommon')
         ;;
     "ubuntu")
         required_packages=('fontconfig' 'libegl1' 'libopengl0' 'libxkbcommon0' 'libxcb-xinput0')
         ;;
     *)
-        echo "WARNING: List of dependencies for distribition \"$platform\" is unknown."
+        echo "WARNING: List of dependencies for distribution \"$platform\" is unknown."
         echo "Please install libX11 and/or libfontconfig packages."
+        exit
         ;;
     esac
 }
@@ -40,7 +41,7 @@ function check_if_package_installed() {
     "centos")
         cmd="yum list"
         ;;
-    "redhat" | "suse" | "rocky")
+    "rhel" | "rocky" | "sled" | "sles")
         cmd="rpm -q"
         ;;
     *)
@@ -54,13 +55,13 @@ check_if_package_installed
 function get_package_manager() {
 
     case "$platform" in
-    "centos" | "redhat" | "rocky")
+    "centos" | "rhel" | "rocky")
         package_manager="yum"
         ;;
     "ubuntu")
         package_manager="apt-get"
         ;;
-    "suse")
+    "sles" | "sled")
         package_manager="zypper"
         ;;
     *)
@@ -74,9 +75,6 @@ get_package_manager
 function get_missing_package() {
     missing_packages=()
     for package in ${required_packages[@]}; do
-
-        echo "cmd & package: $cmd $package"
-
         $cmd $package
         if [[ $? != 0 ]]; then
             missing_packages+=($package)
