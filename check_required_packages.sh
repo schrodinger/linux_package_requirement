@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -uo pipefail
+set -euo pipefail
 
 function identify_platform() {
     platform="$(. /etc/os-release && echo "$ID")"
@@ -75,8 +75,7 @@ get_package_manager
 function get_missing_package() {
     missing_packages=()
     for package in ${required_packages[@]}; do
-        $cmd $package
-        if [[ $? != 0 ]]; then
+        if ! ($cmd $package); then
             missing_packages+=($package)
         fi
     done
