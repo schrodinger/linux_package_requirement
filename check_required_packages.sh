@@ -39,10 +39,7 @@ function check_if_package_installed() {
     "ubuntu")
         cmd="dpkg -s"
         ;;
-    "centos")
-        cmd="yum list"
-        ;;
-    "rhel" | "rocky" | "sled" | "sles")
+    "centos" | "rhel" | "rocky" | "sled" | "sles")
         cmd="rpm -q"
         ;;
     *)
