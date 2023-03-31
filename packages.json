@@ -1,0 +1,76 @@
+{
+	"2023-2": {
+		"common": [{
+				"platforms": ["rocky", "rhel"],
+				"libraries": [
+					"libx11-Xcb"
+				]
+			},
+			{
+				"platforms": ["rhel", "centos", "rocky"],
+				"libraries": [
+					"Freetype",
+					"expat",
+					"fontconfig",
+					"libICE",
+					"libSM",
+					"libX11",
+					"libXau",
+					"libXext",
+					"libXfixes",
+					"libXi",
+					"libXt",
+					"libXxf86vm",
+					"libdrm",
+					"libuuid",
+					"libxcb",
+					"libxcb-devel",
+					"libxkbcommon",
+					"libxshmfence",
+					"mesa-libGLU",
+					"mesa-libglapi",
+					"nss-softokn-freeb"
+				]
+
+			}, {
+				"platforms": ["rocky", "rhel"],
+				"libraries": ["libx11-xcb"]
+			}, {
+				"platforms": ["ubuntu", "suse"],
+				"libraries": [
+					"libdrm2",
+					"libexpat1",
+					"libfreetype6",
+					"libglapi-mesa",
+					"libice6",
+					"libuuid1",
+					"libx11-6",
+					"libx11-xcb1",
+					"libxau6",
+					"libxau6",
+					"libxcb-dri2",
+					"libxcb-dri3-0",
+					"libxcb-glx0",
+					"libxcb-present0",
+					"libxcb-sync1",
+					"libxcb-xfixes0",
+					"libxcb1",
+					"libxext6",
+					"libxi6",
+					"libxkbcommon0",
+					"libxshmfence1",
+					"libxt6",
+					"libxxf86vm1"
+				]
+			}
+		],
+		"ubuntu": [
+			"libglu1-mesa",
+			"libxfixes3"
+		],
+		"opensuse-leap": [
+			"libGLU1",
+			"libXfixes"
+		]
+	}
+}
