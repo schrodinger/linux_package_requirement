@@ -1,11 +1,6 @@
 {
 	"2023-2": {
-		"common": [{
-				"platforms": ["rocky", "rhel"],
-				"libraries": [
-					"libx11-Xcb"
-				]
-			},
+		"common": [
 			{
 				"platforms": ["rhel", "centos", "rocky"],
 				"libraries": [
