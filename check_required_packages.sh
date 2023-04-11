@@ -16,6 +16,16 @@ else
 fi
 
 function get_required_packages() {
+    package_file=$1
+    if [[ -n "$package_file" ]]; then
+        required_packages="$(awk -v platform=$platform '{if ($1 == platform) print $2}' $package_file)"
+        if [[ -z "$required_packages" ]]; then
+            echo "ERROR: could not parse required packages for $platform from $package_file"
+            exit 1
+        fi
+        return
+    fi
+    
     case "${platform,,}" in
     "centos" | "rhel" | "rocky")
         required_packages=('fontconfig' 'libX11' 'libxkbcommon-x11' 'xcb-util-renderutil' 'libglvnd-egl' 'libglvnd-opengl' 'libxkbcommon')
@@ -32,7 +42,7 @@ function get_required_packages() {
     esac
 }
 
-get_required_packages
+get_required_packages "$@"
 
 function check_if_package_installed() {
     case "$platform" in
