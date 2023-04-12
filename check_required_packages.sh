@@ -16,9 +16,9 @@ else
 fi
 
 function get_required_packages() {
-    package_file=$1
-    if [[ -n "$package_file" ]]; then
-        required_packages="$(awk -v platform=$platform '{if ($1 == platform) print $2}' $package_file)"
+    if [[ $# -gt 0 ]]; then
+        package_file=$1
+        required_packages="$(awk '{print $1}' $package_file)"
         if [[ -z "$required_packages" ]]; then
             echo "ERROR: could not parse required packages for $platform from $package_file"
             exit 1
