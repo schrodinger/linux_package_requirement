@@ -25,3 +25,4 @@ pcre
 xcb-util
 xcb-util-image
 xcb-util-keysyms
+xcb-util-renderutil
