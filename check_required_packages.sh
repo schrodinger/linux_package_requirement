@@ -97,6 +97,6 @@ function get_missing_package() {
     fi
 }
 
-echo "required_packages for your platform are: ${required_packages[@]}"
+echo -e "required_packages for your platform are: \n${required_packages[@]}"
 
 get_missing_package
