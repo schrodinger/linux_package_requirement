@@ -1,6 +1,7 @@
 expat
 fontconfig
 freetype
+glx-utils
 libICE
 libSM
 libX11
@@ -22,6 +23,7 @@ libxkbcommon-x11
 mesa-libGLU
 mesa-libglapi
 ncurses-libs
+nfs-utils
 pcre
 xcb-util
 xcb-util-image

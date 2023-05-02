@@ -33,3 +33,4 @@ libxkbcommon0
 libxrender1
 libxss1
 libxt6
+mesa-utils
