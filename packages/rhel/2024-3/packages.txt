@@ -25,6 +25,7 @@ mesa-libglapi
 nfs-utils
 pcre
 xcb-util
+xcb-util-cursor
 xcb-util-image
 xcb-util-keysyms
 xcb-util-renderutil

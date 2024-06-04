@@ -9,6 +9,7 @@ libsm6
 libx11-6
 libx11-xcb1
 libxau6
+libxcb-cursor0
 libxcb-glx0
 libxcb-icccm4
 libxcb-image0
