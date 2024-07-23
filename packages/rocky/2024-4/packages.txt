@@ -23,7 +23,6 @@ libxcb
 libxkbcommon
 libxkbcommon-x11
 mesa-libGLU
-mesa-libglapi
 nfs-utils
 pcre
 pcre2

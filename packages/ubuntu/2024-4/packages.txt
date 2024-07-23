@@ -1,7 +1,6 @@
 libdrm2
 libfontconfig1
 libfreetype6
-libglapi-mesa
 libglu1-mesa
 libice6
 libpng16-16
