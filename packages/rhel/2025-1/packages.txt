@@ -16,6 +16,7 @@ libdrm
 libibverbs
 libnl3
 libnsl
+libtirpc
 libuuid
 libxcb
 libxkbcommon
