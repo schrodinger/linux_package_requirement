@@ -14,8 +14,6 @@ libXi
 libXrender
 libXt
 libdrm
-libibverbs
-libnl3
 libnsl
 libpng
 libuuid
