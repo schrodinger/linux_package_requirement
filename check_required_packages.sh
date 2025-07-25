@@ -4,6 +4,8 @@ set -euo pipefail
 
 function identify_platform() {
     platform="$(. /etc/os-release && echo "$ID")"
+    version_id="$(. /etc/os-release && echo "$VERSION_ID")"
+    major_version="${version_id%%.*}"
 }
 
 identify_platform
@@ -25,7 +27,7 @@ function get_required_packages() {
         fi
         return
     fi
-    
+
     case "${platform,,}" in
     "centos" | "rhel" | "rocky")
         required_packages=('fontconfig' 'libX11' 'libxkbcommon-x11' 'xcb-util-renderutil' 'libglvnd-egl' 'libglvnd-opengl' 'libxkbcommon')
@@ -65,6 +67,9 @@ function get_package_manager() {
     case "$platform" in
     "centos" | "rhel" | "rocky")
         package_manager="yum"
+        if [[ "$major_version" -gt 7 ]]; then
+          package_manager="dnf"
+        fi
         ;;
     "ubuntu")
         package_manager="apt-get"
@@ -80,6 +85,19 @@ function get_package_manager() {
 
 get_package_manager
 
+function get_extra_repos() {
+  extra_repos=()
+  case "$platform" in
+    "centos" | "rhel" | "rocky")
+        extra_repos+=("epel-release")
+        ;;
+    *)
+        ;;
+    esac
+}
+
+get_extra_repos
+
 function get_missing_package() {
     missing_packages=()
     for package in ${required_packages[@]}; do
@@ -91,8 +109,11 @@ function get_missing_package() {
     if [ ${#missing_packages[@]} -eq 0 ]; then
         echo "Your machine has the required packages."
     else
-        echo "(${missing_packages[@]}) is/are required package/s to use Schrödinger suite. Please install them using:
-        sudo $package_manager install ${missing_packages[@]}"
+        echo "(${missing_packages[@]}) is/are required package/s to use Schrödinger suite. Please install them using:"
+        if [ ${#extra_repos[@]} -gt 0 ]; then
+            echo -e "\tsudo $package_manager install ${extra_repos[@]}"
+        fi
+        echo -e "\tsudo $package_manager install ${missing_packages[@]}"
         exit 1
     fi
 }
