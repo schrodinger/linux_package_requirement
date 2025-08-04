@@ -1,6 +1,5 @@
 libdrm2
 libfontconfig1
-libfreetype6
 libglu1-mesa
 libice6
 libsm6

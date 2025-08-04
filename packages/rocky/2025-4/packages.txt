@@ -1,6 +1,5 @@
 expat
 fontconfig
-freetype
 glx-utils
 libICE
 libSM
@@ -15,7 +14,6 @@ libXrender
 libXt
 libdrm
 libnsl
-libpng
 libuuid
 libxcb
 libxkbcommon
