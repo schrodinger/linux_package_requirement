@@ -20,8 +20,6 @@ libxkbcommon
 libxkbcommon-x11
 mesa-libGLU
 nfs-utils
-pcre
-pcre2
 xcb-util
 xcb-util-cursor
 xcb-util-image
