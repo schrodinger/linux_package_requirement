@@ -29,7 +29,7 @@ function get_required_packages() {
     fi
 
     case "${platform,,}" in
-    "centos" | "rhel" | "rocky")
+    "centos" | "rhel" | "amzn" | "rocky")
         required_packages=('fontconfig' 'libX11' 'libxkbcommon-x11' 'xcb-util-renderutil' 'libglvnd-egl' 'libglvnd-opengl' 'libxkbcommon')
         ;;
     "ubuntu")
@@ -51,7 +51,7 @@ function check_if_package_installed() {
     "ubuntu")
         cmd="dpkg -s"
         ;;
-    "centos" | "rhel" | "rocky" | "sled" | "sles")
+    "centos" | "rhel" | "amzn" | "rocky" | "sled" | "sles")
         cmd="rpm -q"
         ;;
     *)
@@ -65,7 +65,7 @@ check_if_package_installed
 function get_package_manager() {
 
     case "$platform" in
-    "centos" | "rhel" | "rocky")
+    "centos" | "rhel" | "amzn" | "rocky")
         package_manager="yum"
         if [[ "$major_version" -gt 7 ]]; then
           package_manager="dnf"
