@@ -3,7 +3,6 @@ libfontconfig1
 libfreetype6
 libglu1-mesa
 libice6
-libpng16-16
 libsm6
 libx11-6
 libx11-xcb1
@@ -31,5 +30,4 @@ libxkbcommon-x11-0
 libxkbcommon0
 libxrender1
 libxss1
-libxt6
 mesa-utils
