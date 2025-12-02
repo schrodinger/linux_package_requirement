@@ -4,6 +4,7 @@ libfreetype6
 libglu1-mesa
 libice6
 libsm6
+libtirpc3
 libx11-6
 libx11-xcb1
 libxau6
