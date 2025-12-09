@@ -13,7 +13,6 @@ libXi
 libXrender
 libXt
 libdrm
-libnsl
 libuuid
 libxcb
 libxkbcommon
