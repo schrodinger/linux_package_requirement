@@ -3,7 +3,6 @@ libfontconfig1
 libfreetype6
 libglu1-mesa
 libice6
-libpng16-16
 libsm6
 libtirpc3
 libx11-6
