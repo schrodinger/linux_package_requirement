@@ -16,6 +16,7 @@ libexpat1
 libfontconfig1
 libudev1
 libuuid1
+libxcb-cursor0
 libxcb-glx0
 libxcb-icccm4
 libxcb-image0
