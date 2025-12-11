@@ -1,4 +1,4 @@
-Mesa-libglapi0
+Mesa-demo-x
 libGLU1
 libICE6
 libSM6
@@ -11,13 +11,9 @@ libXi6
 libXrender1
 libXss1
 libXt6
-libcrypt1
 libdrm2
 libexpat1
 libfontconfig1
-libfreetype6
-libpcre1
-libpng16-16
 libudev1
 libuuid1
 libxcb-glx0
@@ -32,7 +28,6 @@ libxcb-shm0
 libxcb-sync1
 libxcb-util1
 libxcb-xfixes0
-libxcb-xinput0
 libxcb-xkb1
 libxcb1
 libxkbcommon-x11-0
