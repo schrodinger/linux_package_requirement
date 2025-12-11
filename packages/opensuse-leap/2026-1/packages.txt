@@ -14,6 +14,7 @@ libXt6
 libdrm2
 libexpat1
 libfontconfig1
+libtirpc3
 libudev1
 libuuid1
 libxcb-cursor0
