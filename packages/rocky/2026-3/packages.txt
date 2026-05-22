@@ -1,3 +1,4 @@
+cups-libs
 expat
 fontconfig
 glx-utils
