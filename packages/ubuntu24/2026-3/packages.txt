@@ -1,3 +1,4 @@
+libcups2t64
 libdrm2
 libfontconfig1
 libglu1-mesa
