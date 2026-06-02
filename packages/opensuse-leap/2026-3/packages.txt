@@ -12,6 +12,7 @@ libXrender1
 libXss1
 libXt6
 libcups2
+libcrypt1
 libdrm2
 libexpat1
 libfontconfig1

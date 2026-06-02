@@ -15,7 +15,7 @@ libXrender
 libXt
 libdrm
 libuuid
-libxcrypt
+libxcrypt-compat
 libxcb
 libxkbcommon
 libxkbcommon-x11

@@ -1,4 +1,3 @@
-cups-libs
 expat
 fontconfig
 glx-utils
@@ -15,7 +14,6 @@ libXrender
 libXt
 libdrm
 libuuid
-libxcrypt
 libxcb
 libxkbcommon
 libxkbcommon-x11
