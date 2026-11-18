@@ -26,11 +26,8 @@ libxcb-xkb1
 libxcb1
 libxdmcp6
 libxext6
-libxft2
 libxi6
 libxkbcommon-x11-0
 libxkbcommon0
-libxrender1
-libxss1
 libxt6
 mesa-utils
