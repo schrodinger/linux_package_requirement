@@ -4,12 +4,9 @@ glx-utils
 libICE
 libSM
 libX11
-libXScrnSaver
 libXau
 libXext
-libXft
 libXi
-libXrender
 libXt
 libdrm
 libibverbs

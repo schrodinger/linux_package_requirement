@@ -6,10 +6,7 @@ libX11-6
 libX11-xcb1
 libXau6
 libXext6
-libXft2
 libXi6
-libXrender1
-libXss1
 libXt6
 libcups2
 libcrypt1
